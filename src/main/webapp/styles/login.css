@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+body {
+	background-color: #534292;
+}
+
+#form {
+	border: 1px solid black;
+	width: 500px;
+	padding: 1em;
+	text-align: center;
+	margin: 100px auto;
+	background-color: white;
+	color: #79589f;
+}
+
+#form>h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+#form>h2 {
+	color: #aaaaaa;
+	margin-top: 100px;
+}
+
+#form>h2>a {
+	color: #79589f;
+}
+
+#accout {
+	margin: 20px 0;
+}
+
+#accout>input {
+	width: 350px;
+	height: 20px;
+}
+
+#password {
+	margin: 20px 0;
+}
+
+#password>input {
+	width: 350px;
+	height: 20px;
+}
+
+#login>input {
+	margin: 10px;
+	width: 360px;
+	height: 30px;
+	color: white;
+	background-color: #795879;
+}

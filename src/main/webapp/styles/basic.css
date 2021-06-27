@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+#log {
+	height: 150px;
+}
+
+#nav {
+	float: right;
+}
+
+#nav>ul>li {
+	text-decoration: none;
+	list-style: none;
+	margin-right: 20px;
+	display: inline;
+}
+
+#nav>ul>li>a {
+	color: black;
+}
+
+#nav::after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+#wrap {
+	width: 100%;
+}
+
+#wrap::after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+#content {
+	width: 80%;
+	float: left;
+}
+
+#sidebar {
+	float: right;
+	width: 20%;
+}
+
+#sidebar>ul>li {
+	text-decoration: none;
+	list-style: none;
+}
+
+#sidebar>ul>li>a {
+	color: black;
+}
+
+#paging {
+	width: 80%;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+.container {
+	margin-bottom: 0;
+	border-radius: 0;
+	background-color: #fc5404;
+	border: none
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #f2f4c3;
+	padding: 25px;
+}
+
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
+	background-color: #c449c2;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
+}

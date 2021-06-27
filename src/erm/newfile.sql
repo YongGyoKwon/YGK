@@ -1,0 +1,103 @@
+
+/* Drop Tables */
+
+DROP TABLE BASKET CASCADE CONSTRAINTS;
+DROP TABLE MART CASCADE CONSTRAINTS;
+DROP TABLE ITEMS CASCADE CONSTRAINTS;
+DROP TABLE MEMBER CASCADE CONSTRAINTS;
+
+
+
+
+/* Create Tables */
+
+CREATE TABLE BASKET
+(
+	BNO number DEFAULT 1 NOT NULL,
+	NO number NOT NULL,
+	MNO  number NOT NULL UNIQUE,
+	INVOICE varchar2(20) NOT NULL,
+	PRIMARY KEY (BNO)
+);
+
+
+CREATE TABLE ITEMS
+(
+	INO nvarchar2(20) NOT NULL,
+	IMAGE nvarchar2(100) NOT NULL,
+	INAME nvarchar2(20) NOT NULL,
+	INAME2 nvarchar2(15),
+	PRICE varchar2(20) NOT NULL,
+	IPAGE nvarchar2(100),
+	-- 교환 환불 처리 관련 이미지
+	IPAGE2 nvarchar2(500),
+	ICATEGORY number NOT NULL,
+	STOCK number,
+	-- ~~을 검색하면 나올 수 있게 설정
+	HASHTAG nvarchar2(50),
+	DISH float,
+	PRIMARY KEY (INO)
+);
+
+
+CREATE TABLE MART
+(
+	MNO  number NOT NULL UNIQUE,
+	INO nvarchar2(20) NOT NULL,
+	MID nvarchar2(15) NOT NULL ,
+	MPWD nvarchar2(20) NOT NULL,
+	MNAME nvarchar2(15) NOT NULL,
+	MCATEGORY number NOT NULL,
+	MADDR nvarchar2(50) NOT NULL,
+	MTEL varchar2(15)
+);
+
+
+CREATE TABLE MEMBER
+(
+	NO number NOT NULL,
+	ID varchar2(20) NOT NULL UNIQUE,
+	PWD nvarchar2(20) NOT NULL,
+	NAME nvarchar2(20) NOT NULL,
+	ADDR varchar2(100) NOT NULL,
+	TEL varchar2(13) NOT NULL,
+	MAIL varchar2(50) NOT NULL,
+	REGDATE date DEFAULT SYSDATE,
+	-- 카드번호(등록해서 간편결제 등)
+	-- 
+	CARD nvarchar2(500),
+	PRIMARY KEY (NO)
+);
+
+
+
+/* Create Foreign Keys */
+
+ALTER TABLE MART
+	ADD FOREIGN KEY (INO)
+	REFERENCES ITEMS (INO)
+;
+
+
+ALTER TABLE BASKET
+	ADD FOREIGN KEY (MNO)
+	REFERENCES MART (MNO)
+;
+
+
+ALTER TABLE BASKET
+	ADD FOREIGN KEY (NO)
+	REFERENCES MEMBER (NO)
+;
+
+
+
+/* Comments */
+
+COMMENT ON COLUMN ITEMS.IPAGE2 IS '교환 환불 처리 관련 이미지';
+COMMENT ON COLUMN ITEMS.HASHTAG IS '~~을 검색하면 나올 수 있게 설정';
+COMMENT ON COLUMN MEMBER.CARD IS '카드번호(등록해서 간편결제 등)
+';
+
+
+
